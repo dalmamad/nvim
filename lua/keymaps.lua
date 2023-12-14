@@ -13,6 +13,9 @@ vim.g.maplocalleader = " "
 --Remap "," as leader key
 -- vim.g.mapleader = ","
 
+--Remap "m" as leader key
+-- vim.g.mapleader = "m"
+
 -- Modes
 --   normal_mode = "n",
 --   insert_mode = "i",
@@ -55,7 +58,8 @@ keymap("n", "<space>P", '"0P==', opts)
 keymap("n", "p", "p==", opts)
 keymap("n", "P", "P==", opts)
 
-keymap("n", "<C-,>", ",", opts)
+-- Changing mark keybinding
+-- keymap("n", "mm", "m", opts)
 
 -- Better indent
 -- keymap("n", ">", ">>", opts)
@@ -66,10 +70,10 @@ keymap("n", "<C-,>", ",", opts)
 keymap("i", "jj", "<ESC>", opts)
 
 -- Better window navigation
-keymap("i", "<C-h>", "<Esc><C-w>h", opts)
-keymap("i", "<C-k>", "<Esc><C-w>k", opts)
-keymap("i", "<C-j>", "<Esc><C-w>j", opts)
-keymap("i", "<C-l>", "<Esc><C-w>l", opts)
+-- keymap("i", "<C-h>", "<Esc><C-w>h", opts)
+-- keymap("i", "<C-k>", "<Esc><C-w>k", opts)
+-- keymap("i", "<C-j>", "<Esc><C-w>j", opts)
+-- keymap("i", "<C-l>", "<Esc><C-w>l", opts)
 
 -- Bettei resize
 keymap("i", "<CA-k>", "<Esc>:resize -2<CR>", opts)
