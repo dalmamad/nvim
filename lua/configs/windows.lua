@@ -4,7 +4,7 @@ vim.o.equalalways = false
 require("windows").setup({
   autowidth = { --		       |windows.autowidth|
     enable = false,
-    winwidth = 5, --		        |windows.winwidth|
+    winwidth = 0, --		        |windows.winwidth|
     filetype = { --	      |windows.autowidth.filetype|
       help = 2,
     },
@@ -25,7 +25,7 @@ local function cmd(command)
   return table.concat({ "<Cmd>", command, "<CR>" })
 end
 
-vim.keymap.set("n", "<leader>z", cmd("WindowsMaximize"))
+vim.keymap.set("n", "<c-f>", cmd("WindowsMaximize"))
 vim.keymap.set("n", "<C-w>_", cmd("WindowsMaximizeVertically"))
 vim.keymap.set("n", "<C-w>|", cmd("WindowsMaximizeHorizontally"))
 vim.keymap.set("n", "<C-w>=", cmd("WindowsEqualize"))

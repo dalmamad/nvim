@@ -31,6 +31,12 @@ keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
+-- Window move
+keymap("n", "<SA-h>", "<C-w>H", opts)
+keymap("n", "<SA-k>", "<C-w>K<C-w>=", opts)
+keymap("n", "<SA-j>", "<C-w>J<C-w>=", opts)
+keymap("n", "<SA-l>", "<C-w>L", opts)
+
 -- vertical and Horizontal window
 keymap("n", "<leader>v", "<C-w>v", opts)
 keymap("n", "<leader>h", "<C-w>s", opts)
