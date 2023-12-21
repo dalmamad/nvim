@@ -17,14 +17,20 @@ require("lazy").setup({
   {
     "akinsho/toggleterm.nvim",
     config = function()
-      require("configs.toggleterm")
+      require("plugins.toggleterm")
+    end,
+  },
+  {
+    "goolord/alpha-nvim",
+    config = function()
+      require("plugins.alpha")
     end,
   },
   {
     "folke/which-key.nvim",
     commit = "61553aeb3d5ca8c11eea8be6eadf478062982ac9",
     config = function()
-      require("configs.whichkey")
+      require("plugins.whichkey")
     end,
   },
   { "moll/vim-bbye", commit = "25ef93ac5a87526111f43e5110675032dbcacf56" },
@@ -32,14 +38,14 @@ require("lazy").setup({
     "akinsho/bufferline.nvim",
     commit = "c7492a76ce8218e3335f027af44930576b561013",
     config = function()
-      require("configs.bufferline")
+      require("plugins.bufferline")
     end,
   },
   {
     "lewis6991/impatient.nvim",
     commit = "d3dd30ff0b811756e735eb9020609fa315bfbbcc",
     config = function()
-      require("configs.impatient")
+      require("plugins.impatient")
     end,
   },
   {
@@ -47,7 +53,7 @@ require("lazy").setup({
     commit = "bfa0d99ba6f98d077dd91779841f1c88b7b5c165",
     -- requires = { "nvim-tree/nvim-web-devicons", opt = true },
     config = function()
-      require("configs.lualine")
+      require("plugins.lualine")
     end,
   },
   -- Colorschemes
@@ -58,24 +64,17 @@ require("lazy").setup({
   { "Shatur/neovim-ayu", commit = "5af91fe1176e764f7706b11b43793f31635e9520" },
 
   {
-    "goolord/alpha-nvim",
-    config = function()
-      require("configs.alpha")
-    end,
-  },
-  {
     "ahmedkhalf/project.nvim",
     config = function()
-      require("configs.project")
+      require("plugins.project")
     end,
   },
-
   -- cmp plugins
   {
     "hrsh7th/nvim-cmp",
     commit = "df6734aa018d6feb4d76ba6bda94b1aeac2b378a",
     config = function()
-      require("configs.cmp")
+      require("plugins.cmp")
     end,
   }, -- The completion plugin
   { "hrsh7th/cmp-buffer", commit = "62fc67a2b0205136bc3e312664624ba2ab4a9323" }, -- buffer completions
@@ -93,28 +92,28 @@ require("lazy").setup({
     "neovim/nvim-lspconfig",
     commit = "e96f639b608a596aa1ea8abb7e5b799cedbb0b1a",
     config = function()
-      require("configs.lsp")
+      require("plugins.lsp")
     end,
   }, -- enable LSP
   {
     "jose-elias-alvarez/null-ls.nvim",
     commit = "b3d2ebdb75cf1fa4290822b43dc31f61bd0023f8",
     config = function()
-      require("configs.null-ls")
+      require("plugins.null-ls")
     end,
   }, -- for formatters and linters
   {
     "williamboman/mason.nvim",
     commit = "2381f507189e3e10a43c3932a3ec6c2847180abc",
     config = function()
-      require("configs.mason")
+      require("plugins.mason")
     end,
   },
   {
     "williamboman/mason-lspconfig.nvim",
     commit = "4674ed145fd0e72c9bfdb32b647f968b221bf2f2",
     config = function()
-      require("configs.mason-lspconfig")
+      require("plugins.mason-lspconfig")
     end,
   },
   -- Telescope
@@ -122,7 +121,7 @@ require("lazy").setup({
     "nvim-telescope/telescope.nvim",
     -- commit = "d96eaa914aab6cfc4adccb34af421bdd496468b0",
     config = function()
-      require("configs.telescope")
+      require("plugins.telescope")
     end,
   },
 
@@ -135,7 +134,7 @@ require("lazy").setup({
       ts_update()
     end,
     config = function()
-      require("configs.treesitter")
+      require("plugins.treesitter")
     end,
   },
 
@@ -144,7 +143,7 @@ require("lazy").setup({
     "windwp/nvim-autopairs",
     commit = "fa6876f832ea1b71801c4e481d8feca9a36215ec",
     config = function()
-      require("configs.autopairs")
+      require("plugins.autopairs")
     end,
   }, -- Autopairs, integrates with both cmp and treesitter
 
@@ -153,7 +152,7 @@ require("lazy").setup({
     "numToStr/Comment.nvim",
     commit = "5f01c1a89adafc52bf34e3bf690f80d9d726715d",
     config = function()
-      require("configs.comment")
+      require("plugins.comment")
     end,
   },
 
@@ -163,7 +162,7 @@ require("lazy").setup({
     commit = "fcdec7d186aee8ed39ef79c87666c1401f6a4d48",
     -- requires = { "nvim-tree/nvim-web-devicons" },
     config = function()
-      require("configs.nvim-tree")
+      require("plugins.nvim-tree")
     end,
   },
   -- Git
@@ -171,12 +170,12 @@ require("lazy").setup({
     "lewis6991/gitsigns.nvim",
     commit = "d076301a634198e0ae3efee3b298fc63c055a871",
     config = function()
-      require("configs.gitsigns")
+      require("plugins.gitsigns")
     end,
   },
   -- git conflict
   {'akinsho/git-conflict.nvim', version = '*', config = function()
-    require('configs.git-conflict')
+    require('plugins.git-conflict')
   end},
   -- use { "mfussenegger/nvim-dap" }
 
@@ -186,13 +185,13 @@ require("lazy").setup({
     commit = "1b9df577262b2c4c4ea422161742927f80ffa131",
     dependencies = {"nvim-lua/plenary.nvim"},
     config = function()
-      require("configs.todo-comments")
+      require("plugins.todo-comments")
     end,
   },
 
   { 'CRAG666/code_runner.nvim', dependencies = {'nvim-lua/plenary.nvim'},
     config = function()
-      require("configs.code-runner")
+      require("plugins.code-runner")
     end,
   },
 
@@ -200,7 +199,7 @@ require("lazy").setup({
   --   "nvim-neorg/neorg",
   --   run = ":Neorg sync-parsers", -- This is the important bit!
   --   config = function()
-  --     require("configs.neorg")
+  --     require("plugins.neorg")
   --   end,
   -- })
   -- use {"nvim-neorg/neorg-telescope"}
@@ -208,7 +207,7 @@ require("lazy").setup({
   {
     "epwalsh/obsidian.nvim",
     config = function()
-      require("configs.obsidian")
+      require("plugins.obsidian")
     end,
   },
 
@@ -216,7 +215,7 @@ require("lazy").setup({
   -- use({
   --   "rcarriga/nvim-notify",
   --   config = function()
-  --     require("configs.notify")
+  --     require("plugins.notify")
   --   end,
   -- })
 
@@ -225,7 +224,7 @@ require("lazy").setup({
     "dalmamad/debugprint.nvim",
     branch = 'dalmamad',
     config = function()
-      require("configs.debugprint")
+      require("plugins.debugprint")
     end,
   },
 
@@ -237,7 +236,7 @@ require("lazy").setup({
       "anuvyklack/animation.nvim",
     },
     config = function()
-      require("configs.windows")
+      require("plugins.windows")
     end,
   },
 
@@ -246,7 +245,7 @@ require("lazy").setup({
     "phaazon/hop.nvim",
     branch = "v2", -- optional but strongly recommended
     config = function()
-      require("configs.hop")
+      require("plugins.hop")
     end,
   },
 
@@ -255,7 +254,7 @@ require("lazy").setup({
   "rest-nvim/rest.nvim",
   dependencies = { "nvim-lua/plenary.nvim" },
   config = function()
-      require("configs.rest")
+      require("plugins.rest")
   end
 },
 
