@@ -1,0 +1,1 @@
+- adding a function to open terminal directory in file explorer with command such as :NvimTreeFindFile
