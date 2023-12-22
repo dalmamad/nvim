@@ -160,6 +160,13 @@ require("lazy").setup({
     end,
   },
 
+  -- indent
+  { "lukas-reineke/indent-blankline.nvim", 
+    config = function()
+      require("plugins.indent-blankline")
+    end,
+  },
+
   -- File Explorer
   {
     "dalmamad/nvim-tree.lua",
