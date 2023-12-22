@@ -29,7 +29,7 @@ toggleterm.setup({
 function _G.set_terminal_keymaps()
   local opts = { noremap = true }
   -- Press <Esc> to exit terminal mode
-  vim.api.nvim_buf_set_keymap(0, "t", "<esc>", [[<C-\><C-n>]], opts)
+  vim.api.nvim_buf_set_keymap(0, "t", "<c-space>", [[<C-\><C-n>]], opts)
   -- vim.api.nvim_buf_set_keymap(0, 't', 'jj', [[<C-\><C-n>]], opts)
 
   -- Better terminal navigation
@@ -50,7 +50,7 @@ vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 local Terminal = require("toggleterm.terminal").Terminal
 local lazygit = Terminal:new({
   cmd = "lazygit",
-  --   hidden = true ,
+  hidden = true ,
   dir = "git_dir",
   direction = "float",
   float_opts = {
@@ -60,18 +60,15 @@ local lazygit = Terminal:new({
   on_open = function(term)
     vim.cmd("startinsert!")
     -- disable Esc for lazygit - conflict with lazygit
-    vim.api.nvim_buf_del_keymap(0, "t", "<esc>")
-    vim.api.nvim_buf_set_keymap(0, "t", "<A-Esc>", [[<C-\><C-n>]], { noremap = true })
-
-    vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
+    -- vim.api.nvim_buf_del_keymap(0, "t", "<esc>")
+    -- vim.api.nvim_buf_set_keymap(0, "t", "<A-Esc>", [[<C-\><C-n>]], { noremap = true })
+    -- vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
   end,
   -- function to run on closing the terminal
   on_close = function(term)
     -- enable Esc after closing lazygit
-    vim.api.nvim_buf_del_keymap(0, "t", "<A-Esc>")
-    vim.api.nvim_buf_set_keymap(0, "t", "<Esc>", [[<C-\><C-n>]], { noremap = true })
-
-    vim.cmd("startinsert!")
+    -- vim.api.nvim_buf_del_keymap(0, "t", "<A-Esc>")
+    -- vim.api.nvim_buf_set_keymap(0, "t", "<Esc>", [[<C-\><C-n>]], { noremap = true })
   end,
 })
 
@@ -81,8 +78,7 @@ end
 
 local node = Terminal:new({ cmd = "node", hidden = true })
 
-function _NODE_TOGGLE()
-  node:toggle()
+function _NODE_TOGGLE() node:toggle()
 end
 
 local ncdu = Terminal:new({ cmd = "ncdu", hidden = true })
