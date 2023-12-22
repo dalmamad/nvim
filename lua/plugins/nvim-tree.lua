@@ -54,6 +54,7 @@ nvim_tree.setup({
         { key = "r",                  action = "" },
         { key = { "l", "<CR>", "o" }, cb = tree_cb("edit") },
         { key = "h",                  cb = tree_cb("close_node") },
+        { key = "d",                  cb = tree_cb("remove") },
         { key = "yy",                 cb = tree_cb("copy") },
         { key = "yn",                 cb = tree_cb("copy_name") },
         { key = "yr",                 cb = tree_cb("copy_path") },
