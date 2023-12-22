@@ -1,3 +1,14 @@
+local ensure_installed = {
+  -- LSP
+  "json-lsp", "lua-language-server", "typescript-language-server", "pyright", "clangd",
+  -- Formatter
+  "prettier",
+  "black",
+  "clang-format",
+  "csharpier",
+  "rustfmt",
+}
+
 local DEFAULT_SETTINGS = {
     -- The directory in which to install packages.
     -- install_root_dir = path.concat { vim.fn.stdpath "data", "mason" },
@@ -85,3 +96,36 @@ local DEFAULT_SETTINGS = {
     },
 }
 require("mason").setup(DEFAULT_SETTINGS)
+
+-- install ensure list
+local mason_registry = require("mason-registry")
+local mason_api = require("mason.api.command")
+local function install_ensure_list(packages)
+  for _, package in ipairs(packages) do
+    if (mason_registry.is_installed(package) == false) then
+      -- local command = "MasonInstall " .. package
+      -- vim.cmd(command)
+      -- mason_api.MasonInstall(package)
+    end
+  end
+end
+install_ensure_list(ensure_installed)
+
+-- local function parse_args(args)
+--     local opts_list, args = unpack(_.partition(_.starts_with "--", args))
+--     local opts = _.set_of(_.map(_.gsub("^%-%-", ""), opts_list))
+--   -- print(opts)
+--   -- print(args)
+--     return opts, args
+-- end
+--
+-- vim.api.nvim_create_user_command("Test", function(opts)
+--   -- print(vim.inspect(opts))
+--     local command_opts, packages = parse_args(opts.fargs)
+-- end, {
+--     desc = "Install one or more packages.",
+--     nargs = "+",
+--     complete = "custom,v:lua.mason_completion.available_package_completion",
+-- })
+
+-- print(vim.inspect(mason_api))
