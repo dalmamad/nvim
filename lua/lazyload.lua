@@ -21,6 +21,10 @@ require("lazy").setup({
     end,
   },
   {
+        "willothy/flatten.nvim",
+        config = true,
+  },
+  {
     "goolord/alpha-nvim",
     config = function()
       require("plugins.alpha")

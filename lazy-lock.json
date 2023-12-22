@@ -12,6 +12,7 @@
   "code_runner.nvim": { "branch": "main", "commit": "701807c4f181cd00d4fad0280bbc821324cbe3c1" },
   "darkplus.nvim": { "branch": "master", "commit": "d308e9538f0e50cc3e80afc4ed904ab8b8e10fe6" },
   "debugprint.nvim": { "branch": "dalmamad", "commit": "1843039d52425b8d85d9722bb2554b07abe46762" },
+  "flatten.nvim": { "branch": "main", "commit": "c78c5200899d2afd171d9d2bf09e139e3710eeb6" },
   "friendly-snippets": { "branch": "main", "commit": "d27a83a363e61009278b6598703a763ce9c8e617" },
   "git-conflict.nvim": { "branch": "main", "commit": "4e0191c9a0ae05d7fbdcdc7f15cd358f56d23bfb" },
   "gitsigns.nvim": { "branch": "main", "commit": "d076301a634198e0ae3efee3b298fc63c055a871" },
