@@ -161,9 +161,17 @@ require("lazy").setup({
   },
 
   -- indent
-  { "lukas-reineke/indent-blankline.nvim", 
+  { "lukas-reineke/indent-blankline.nvim",
     config = function()
       require("plugins.indent-blankline")
+    end,
+  },
+
+  -- Highlight yanked text
+  { "machakann/vim-highlightedyank",
+    lazy = false,
+    config = function()
+      require("plugins.highlightedyank")
     end,
   },
 
