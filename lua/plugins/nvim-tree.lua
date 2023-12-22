@@ -33,7 +33,7 @@ nvim_tree.setup({
   reload_on_bufenter = false,
   respect_buf_cwd = true,
   on_attach = "disable",
-  remove_keymaps = false,
+  remove_keymaps = true,
   select_prompts = false,
   view = {
     adaptive_size = false,
@@ -49,7 +49,6 @@ nvim_tree.setup({
       custom_only = false,
       list = {
         { key = "c",                  action = "" },
-        { key = "m",                  action = "" },
         { key = "y",                  action = "" },
         { key = "a",                  action = "" },
         { key = "r",                  action = "" },
