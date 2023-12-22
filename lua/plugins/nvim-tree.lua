@@ -144,7 +144,7 @@ nvim_tree.setup({
     auto_open = true,
   },
   update_focused_file = {
-    enable = true,
+    enable = false,
     debounce_delay = 15,
     update_root = true,
     ignore_list = {},
@@ -260,8 +260,5 @@ nvim_tree.setup({
   },
 })
 
-local fun = function()
-  local s = vim.api.nvim_list_bufs()
-  print(vim.inspect(s))
-end
-vim.api.nvim_create_user_command("Q", fun, {})
+local opts = { noremap = true, silent = true }
+vim.api.nvim_set_keymap('n', '<c-e>', ':NvimTreeFindFile<CR>', opts)
