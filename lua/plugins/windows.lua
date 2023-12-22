@@ -14,9 +14,9 @@ require("windows").setup({
     filetype = { "NvimTree", "neo-tree", "undotree", "gundo" },
   },
   animation = {
-    enable = false,
-    duration = 300,
-    fps = 30,
+    enable = true,
+    duration = 100,
+    fps = 60,
     easing = "in_out_sine",
   },
 })
