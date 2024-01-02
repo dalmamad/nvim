@@ -1,3 +1,4 @@
 - adding a function to open terminal directory in file explorer with command such as :NvimTreeFindFile
 - a way to temporary remap <Esc> key if a tui app was oppened in nvim terminal
 - repl plugin
+- fix the notes in alpha

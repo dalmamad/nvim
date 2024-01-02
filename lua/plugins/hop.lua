@@ -18,4 +18,3 @@ vim.keymap.set("v", "s", "<cmd>HopChar2<cr>", { noremap = true, silent = true })
 -- vim.keymap.set('', 'T', function()
 --   hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
 -- end, {remap=true})
-

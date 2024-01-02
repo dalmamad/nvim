@@ -49,7 +49,7 @@ null_ls.setup({
     formatting.csharpier,
     formatting.golines,
     formatting.rustfmt.with({ extra_args = {}}),
-    -- formatting.stylua,
+    formatting.stylua,
     -- diagnostics.flake8,
     -- diagnostics.selene,
   },

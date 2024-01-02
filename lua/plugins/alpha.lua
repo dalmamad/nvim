@@ -32,6 +32,7 @@ local buttons = {
     dashboard.button("r", "   Recent", ":Telescope oldfiles<CR>"),
     dashboard.button("s", "   Settings", ":e $MYVIMRC | :cd %:p:h | split . | wincmd k | pwd<CR> | <cmd>NvimTreeToggle<cr>"),
     dashboard.button("d", "   Dotfiles", ":e ~/dotfiles <cr>"),
+    dashboard.button("c", "   Code", ":e ~/code <cr>"),
     dashboard.button("n", " 󰺿  Notes", ":lua require('telescope.builtin').find_files({cwd = '~/notes', hidden = false, find_command = {'find','.','-type','f'}})<cr>"),
     dashboard.button("q", " 󰿅  Quit", ":qa<CR>"),
     -- dashboard.button("n", " ﴬ  Notes", ":Neorg workspace home <cr> | :cd %:h <cr>"),

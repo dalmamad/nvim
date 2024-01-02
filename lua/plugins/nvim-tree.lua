@@ -53,6 +53,7 @@ nvim_tree.setup({
         { key = "a",                  action = "" },
         { key = "r",                  action = "" },
         { key = { "l", "<CR>", "o" }, cb = tree_cb("edit") },
+        { key = "H",                  cb = tree_cb("toggle_dotfiles") },
         { key = "h",                  cb = tree_cb("close_node") },
         { key = "d",                  cb = tree_cb("remove") },
         { key = "yy",                 cb = tree_cb("copy") },
@@ -63,7 +64,7 @@ nvim_tree.setup({
         { key = "ra",                 cb = tree_cb("rename") },
         { key = "rn",                 cb = tree_cb("full_rename") },
         { key = "af",                 cb = tree_cb("create") },
-        { key = "ad",                 cb = tree_cb "create_dir" },
+        { key = "ad",                 cb = tree_cb("create_dir") },
         -- { key = "v", cb = tree_cb "vsplit" },
         -- { key = "s", cb = tree_cb "split" },
       },
@@ -261,4 +262,4 @@ nvim_tree.setup({
 })
 
 local opts = { noremap = true, silent = true }
-vim.api.nvim_set_keymap('n', '<c-e>', ':NvimTreeFindFile<CR>', opts)
+vim.api.nvim_set_keymap("n", "<c-e>", ":NvimTreeFindFile<CR>", opts)

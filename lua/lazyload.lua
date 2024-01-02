@@ -13,7 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   { "nvim-tree/nvim-web-devicons", commit = "05e1072f63f6c194ac6e867b567e6b437d3d4622" },
-  { "nvim-lua/plenary.nvim", commit = "968a4b9afec0c633bc369662e78f8c5db0eba249" }, -- Useful lua functions used by lots of plugins
+  { "nvim-lua/plenary.nvim",       commit = "968a4b9afec0c633bc369662e78f8c5db0eba249" }, -- Useful lua functions used by lots of plugins
   {
     "akinsho/toggleterm.nvim",
     config = function()
@@ -21,8 +21,8 @@ require("lazy").setup({
     end,
   },
   {
-        "willothy/flatten.nvim",
-        config = true,
+    "willothy/flatten.nvim",
+    config = true,
   },
   {
     "goolord/alpha-nvim",
@@ -37,7 +37,7 @@ require("lazy").setup({
       require("plugins.whichkey")
     end,
   },
-  { "moll/vim-bbye", commit = "25ef93ac5a87526111f43e5110675032dbcacf56" },
+  { "moll/vim-bbye",                    commit = "25ef93ac5a87526111f43e5110675032dbcacf56" },
   {
     "akinsho/bufferline.nvim",
     commit = "c7492a76ce8218e3335f027af44930576b561013",
@@ -61,12 +61,12 @@ require("lazy").setup({
     end,
   },
   -- Colorschemes
-  { "folke/tokyonight.nvim", commit = "ecae454c303d5190fb0ded096205a99fae16c6d4" },
-  { "lunarvim/darkplus.nvim", commit = "d308e9538f0e50cc3e80afc4ed904ab8b8e10fe6" },
+  { "folke/tokyonight.nvim",            commit = "ecae454c303d5190fb0ded096205a99fae16c6d4" },
+  { "lunarvim/darkplus.nvim",           commit = "d308e9538f0e50cc3e80afc4ed904ab8b8e10fe6" },
   { "nyoom-engineering/oxocarbon.nvim", commit = "749562ce8ffbcc5c4f69ec0dab4f4cdd0a8d2e47" },
-  { "luisiacc/gruvbox-baby", commit = "309b405d64af29126b1eb8d9be2f280ee2aec15d" },
-  { "Shatur/neovim-ayu", commit = "5af91fe1176e764f7706b11b43793f31635e9520" },
-
+  { "luisiacc/gruvbox-baby",            commit = "309b405d64af29126b1eb8d9be2f280ee2aec15d" },
+  { "Shatur/neovim-ayu",                commit = "5af91fe1176e764f7706b11b43793f31635e9520" },
+  { "catppuccin/nvim",                  name = "catppuccin",                                priority = 1000 },
   {
     "ahmedkhalf/project.nvim",
     config = function()
@@ -80,15 +80,10 @@ require("lazy").setup({
     config = function()
       require("plugins.cmp")
     end,
-  }, -- The completion plugin
-  { "hrsh7th/cmp-buffer", commit = "62fc67a2b0205136bc3e312664624ba2ab4a9323" }, -- buffer completions
-  { "hrsh7th/cmp-path", commit = "466b6b8270f7ba89abd59f402c73f63c7331ff6e" }, -- path completions
-  { "saadparwaiz1/cmp_luasnip", commit = "a9de941bcbda508d0a45d28ae366bb3f08db2e36" }, -- snippet completions
-  { "hrsh7th/cmp-nvim-lsp", commit = "affe808a5c56b71630f17aa7c38e15c59fd648a8" },
-  { "hrsh7th/cmp-nvim-lua", commit = "d276254e7198ab7d00f117e88e223b4bd8c02d21" },
-
+  },                                                                                      -- The completion plugin
+  { "hrsh7th/cmp-buffer",           commit = "62fc67a2b0205136bc3e312664624ba2ab4a9323" }, -- buffer completions { "hrsh7th/cmp-path",             commit = "466b6b8270f7ba89abd59f402c73f63c7331ff6e" }, -- path completions { "saadparwaiz1/cmp_luasnip",     commit = "a9de941bcbda508d0a45d28ae366bb3f08db2e36" }, -- snippet completions { "hrsh7th/cmp-nvim-lsp",         commit = "affe808a5c56b71630f17aa7c38e15c59fd648a8" }, { "hrsh7th/cmp-nvim-lua",         commit = "d276254e7198ab7d00f117e88e223b4bd8c02d21" },
   -- snippets
-  { "L3MON4D3/LuaSnip", commit = "79b2019c68a2ff5ae4d732d50746c901dd45603a", }, --snippet engine
+  { "L3MON4D3/LuaSnip",             commit = "79b2019c68a2ff5ae4d732d50746c901dd45603a" }, --snippet engine
   { "rafamadriz/friendly-snippets", commit = "d27a83a363e61009278b6598703a763ce9c8e617" }, -- a bunch of snippets to use
 
   -- LSP
@@ -161,14 +156,16 @@ require("lazy").setup({
   },
 
   -- indent
-  { "lukas-reineke/indent-blankline.nvim",
+  {
+    "lukas-reineke/indent-blankline.nvim",
     config = function()
       require("plugins.indent-blankline")
     end,
   },
 
   -- Highlight yanked text
-  { "machakann/vim-highlightedyank",
+  {
+    "machakann/vim-highlightedyank",
     lazy = false,
     config = function()
       require("plugins.highlightedyank")
@@ -193,22 +190,28 @@ require("lazy").setup({
     end,
   },
   -- git conflict
-  {'akinsho/git-conflict.nvim', version = '*', config = function()
-    require('plugins.git-conflict')
-  end},
+  {
+    "akinsho/git-conflict.nvim",
+    version = "*",
+    config = function()
+      require("plugins.git-conflict")
+    end,
+  },
   -- use { "mfussenegger/nvim-dap" }
 
   --Notes
   {
     "folke/todo-comments.nvim",
     commit = "1b9df577262b2c4c4ea422161742927f80ffa131",
-    dependencies = {"nvim-lua/plenary.nvim"},
+    dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       require("plugins.todo-comments")
     end,
   },
 
-  { 'CRAG666/code_runner.nvim', dependencies = {'nvim-lua/plenary.nvim'},
+  {
+    "CRAG666/code_runner.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       require("plugins.code-runner")
     end,
@@ -241,7 +244,7 @@ require("lazy").setup({
   --Debug
   {
     "dalmamad/debugprint.nvim",
-    branch = 'dalmamad',
+    branch = "dalmamad",
     config = function()
       require("plugins.debugprint")
     end,
@@ -270,12 +273,12 @@ require("lazy").setup({
 
   -- Rest
   {
-  "rest-nvim/rest.nvim",
-  dependencies = { "nvim-lua/plenary.nvim" },
-  config = function()
+    "rest-nvim/rest.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
       require("plugins.rest")
-  end
-},
+    end,
+  },
 
   -- Sudo
   {
@@ -286,6 +289,8 @@ require("lazy").setup({
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown" },
-    build = function() vim.fn["mkdp#util#install"]() end,
+    build = function()
+      vim.fn["mkdp#util#install"]()
+    end,
   },
 })
