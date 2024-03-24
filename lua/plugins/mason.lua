@@ -13,7 +13,6 @@ local ensure_installed = {
   "black",
   "clang-format",
   "csharpier",
-  "rustfmt",
 }
 
 local DEFAULT_SETTINGS = {

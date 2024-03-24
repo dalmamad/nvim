@@ -33,7 +33,7 @@ nvim_tree.setup({
   reload_on_bufenter = false,
   respect_buf_cwd = true,
   on_attach = "disable",
-  remove_keymaps = true,
+  remove_keymaps = false,
   select_prompts = false,
   view = {
     adaptive_size = false,
@@ -46,7 +46,7 @@ nvim_tree.setup({
     relativenumber = false,
     signcolumn = "yes",
     mappings = {
-      custom_only = false,
+      custom_only = true,
       list = {
         { key = "c",                  action = "" },
         { key = "y",                  action = "" },
@@ -54,6 +54,7 @@ nvim_tree.setup({
         { key = "r",                  action = "" },
         { key = { "l", "<CR>", "o" }, cb = tree_cb("edit") },
         { key = "H",                  cb = tree_cb("toggle_dotfiles") },
+        { key = "I",                  cb = tree_cb("toggle_git_ignored") },
         { key = "h",                  cb = tree_cb("close_node") },
         { key = "d",                  cb = tree_cb("remove") },
         { key = "yy",                 cb = tree_cb("copy") },

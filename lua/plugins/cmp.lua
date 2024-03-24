@@ -8,7 +8,9 @@ if not snip_status_ok then
   return
 end
 
-require("luasnip/loaders/from_vscode").lazy_load()
+-- require("luasnip.loaders.from_vscode").lazy_load() -- You can pass { paths = "./my-snippets/"} as well
+-- require("luasnip/loaders/from_vscode").lazy_load()
+-- require("luasnip.loaders.from_snipmate").lazy_load()
 
 local check_backspace = function()
   local col = vim.fn.col(".") - 1
@@ -48,8 +50,10 @@ local kind_icons = {
 cmp.setup({
   preselect = cmp.PreselectMode.None,
   snippet = {
+    -- REQUIRED - you must specify a snippet engine
     expand = function(args)
-      luasnip.lsp_expand(args.body) -- For `luasnip` users.
+      vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+      require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
     end,
   },
   mapping = {
@@ -95,6 +99,7 @@ cmp.setup({
       "s",
     }),
   },
+
   formatting = {
     fields = { "kind", "abbr", "menu" },
     format = function(entry, vim_item)
@@ -103,32 +108,64 @@ cmp.setup({
       -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
       vim_item.menu = ({
         nvim_lsp = "[LSP]",
-        luasnip = "[Snippet]",
+        -- luasnip = "[luasnip]",
+        vsnip = "[Snippet]",
+        -- snippy = "[Snippet]",
         buffer = "[Buffer]",
         path = "[Path]",
-        neorg = "[Neorg]"
+        -- neorg = "[Neorg]"
       })[entry.source.name]
       return vim_item
     end,
   },
-  sources = {
-    { name = "nvim_lsp" },
-    { name = "luasnip" },
-    { name = "buffer" },
-    { name = "path" },
-    { name = "neorg" },
-  },
-  confirm_opts = {
-    behavior = cmp.ConfirmBehavior.Replace,
-    select = false,
-  },
-  window = {
-    documentation = {
-      border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-    },
-  },
-  experimental = {
-    ghost_text = true,
-    native_menu = false,
-  },
+
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    -- { name = 'luasnip' }, -- For luasnip users.
+    { name = 'vsnip' }, -- For vsnip users.
+    -- { name = 'ultisnips' }, -- For ultisnips users.
+    -- { name = 'snippy' }, -- For snippy users.
+  },{
+      { name = 'buffer' },
+    })
+  -- confirm_opts = {
+  --   behavior = cmp.ConfirmBehavior.Replace,
+  --   select = false,
+  -- },
+  -- window = {
+  --   documentation = {
+  --     border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+  --   },
+  -- },
+  -- experimental = {
+  --   ghost_text = true,
+  --   native_menu = false,
+  -- },
 })
+
+-- Set configuration for specific filetype.
+  cmp.setup.filetype('gitcommit', {
+    sources = cmp.config.sources({
+      { name = 'git' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
+    }, {
+      { name = 'buffer' },
+    })
+  })
+
+-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline({ '/', '?' }, {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+      { name = 'buffer' }
+    }
+  })
+
+  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+      { name = 'path' }
+    }, {
+      { name = 'cmdline' }
+    })
+  })

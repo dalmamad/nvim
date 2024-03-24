@@ -73,48 +73,49 @@ require("lazy").setup({
       require("plugins.project")
     end,
   },
-  -- cmp plugins
-  {
-    "hrsh7th/nvim-cmp",
-    commit = "df6734aa018d6feb4d76ba6bda94b1aeac2b378a",
-    config = function()
-      require("plugins.cmp")
-    end,
-  },                                                                                      -- The completion plugin
-  { "hrsh7th/cmp-buffer",           commit = "62fc67a2b0205136bc3e312664624ba2ab4a9323" }, -- buffer completions { "hrsh7th/cmp-path",             commit = "466b6b8270f7ba89abd59f402c73f63c7331ff6e" }, -- path completions { "saadparwaiz1/cmp_luasnip",     commit = "a9de941bcbda508d0a45d28ae366bb3f08db2e36" }, -- snippet completions { "hrsh7th/cmp-nvim-lsp",         commit = "affe808a5c56b71630f17aa7c38e15c59fd648a8" }, { "hrsh7th/cmp-nvim-lua",         commit = "d276254e7198ab7d00f117e88e223b4bd8c02d21" },
-  -- snippets
-  { "L3MON4D3/LuaSnip",             commit = "79b2019c68a2ff5ae4d732d50746c901dd45603a" }, --snippet engine
-  { "rafamadriz/friendly-snippets", commit = "d27a83a363e61009278b6598703a763ce9c8e617" }, -- a bunch of snippets to use
 
   -- LSP
   {
     "neovim/nvim-lspconfig",
-    commit = "e96f639b608a596aa1ea8abb7e5b799cedbb0b1a",
     config = function()
       require("plugins.lsp")
     end,
   }, -- enable LSP
   {
     "jose-elias-alvarez/null-ls.nvim",
-    commit = "b3d2ebdb75cf1fa4290822b43dc31f61bd0023f8",
     config = function()
       require("plugins.null-ls")
     end,
   }, -- for formatters and linters
   {
     "williamboman/mason.nvim",
-    commit = "2381f507189e3e10a43c3932a3ec6c2847180abc",
     config = function()
       require("plugins.mason")
     end,
   },
   {
     "williamboman/mason-lspconfig.nvim",
-    commit = "4674ed145fd0e72c9bfdb32b647f968b221bf2f2",
     config = function()
       require("plugins.mason-lspconfig")
     end,
   },
+
+  -- cmp plugins
+  {"hrsh7th/cmp-cmdline"},
+  {"hrsh7th/cmp-path"},
+  {"hrsh7th/cmp-nvim-lsp"},
+  { "hrsh7th/cmp-buffer"}, -- buffer completions { "hrsh7th/cmp-path",             commit = "466b6b8270f7ba89abd59f402c73f63c7331ff6e" }, -- path completions { "saadparwaiz1/cmp_luasnip",     commit = "a9de941bcbda508d0a45d28ae366bb3f08db2e36" }, -- snippet completions { "hrsh7th/cmp-nvim-lsp",         commit = "affe808a5c56b71630f17aa7c38e15c59fd648a8" }, { "hrsh7th/cmp-nvim-lua",         commit = "d276254e7198ab7d00f117e88e223b4bd8c02d21" },
+  {
+    "hrsh7th/nvim-cmp",
+    config = function()
+      require("plugins.cmp")
+    end,
+  },                                                                                      -- The completion plugin
+  -- snippets
+  { "L3MON4D3/LuaSnip"}, --snippet engine
+  {"hrsh7th/cmp-vsnip"},
+  {"hrsh7th/vim-vsnip"},
+  { "rafamadriz/friendly-snippets"}, -- a bunch of snippets to use
   -- Telescope
   {
     "nvim-telescope/telescope.nvim",
@@ -197,7 +198,6 @@ require("lazy").setup({
       require("plugins.git-conflict")
     end,
   },
-  -- use { "mfussenegger/nvim-dap" }
 
   --Notes
   {

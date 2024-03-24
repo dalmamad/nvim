@@ -91,10 +91,10 @@ require("lspconfig")["pyright"].setup({
 	flags = lsp_flags,
 })
 
-require("lspconfig")["clangd"].setup({
-  on_attach = on_attach,
-	flags = lsp_flags,
-})
+-- require("lspconfig")["clangd"].setup({
+--   on_attach = on_attach,
+-- 	flags = lsp_flags,
+-- })
 
 require("lspconfig")["gopls"].setup({
   on_attach = on_attach,
@@ -107,7 +107,7 @@ require("lspconfig")["csharp_ls"].setup({
 	flags = lsp_flags,
 })
 
-require("lspconfig")["sumneko_lua"].setup({
+require("lspconfig")["lua_ls"].setup({
   on_attach = on_attach,
 	flags = lsp_flags,
 	settings = {
