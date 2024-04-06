@@ -46,6 +46,8 @@ end
 -- disabling numbers in terminal
 vim.cmd [[autocmd TermOpen * setlocal nonumber norelativenumber]]
 
+
+vim.cmd "set conceallevel=1"
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]
 vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
