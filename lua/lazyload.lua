@@ -12,7 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  { "nvim-tree/nvim-web-devicons", commit = "05e1072f63f6c194ac6e867b567e6b437d3d4622" },
+  { "nvim-tree/nvim-web-devicons" },
   { "nvim-lua/plenary.nvim",       commit = "968a4b9afec0c633bc369662e78f8c5db0eba249" }, -- Useful lua functions used by lots of plugins
   {
     "akinsho/toggleterm.nvim",
@@ -40,7 +40,6 @@ require("lazy").setup({
   { "moll/vim-bbye",                    commit = "25ef93ac5a87526111f43e5110675032dbcacf56" },
   {
     "akinsho/bufferline.nvim",
-    commit = "c7492a76ce8218e3335f027af44930576b561013",
     config = function()
       require("plugins.bufferline")
     end,
@@ -273,17 +272,34 @@ require("lazy").setup({
 
   -- Rest
   {
+    "vhyrro/luarocks.nvim",
+    priority = 1000,
+    config = true,
+    opts = {
+      rocks = { "lua-curl", "nvim-nio", "mimetypes", "xml2lua" }
+    }
+  },
+  {
     "rest-nvim/rest.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    ft = "http",
+    dependencies = { "luarocks.nvim" },
     config = function()
       require("plugins.rest")
     end,
   },
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+      require("plugins.nvim-surround")
+    end
+  },
 
   -- Sudo
-  {
-    "lambdalisue/suda.vim",
-  },
+  -- {
+  --   "lambdalisue/suda.vim",
+  -- },
 
 {
   "iamcco/markdown-preview.nvim",

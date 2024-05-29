@@ -53,7 +53,7 @@ nvim_tree.setup({
         { key = "a",                  action = "" },
         { key = "r",                  action = "" },
         { key = { "l", "<CR>", "o" }, cb = tree_cb("edit") },
-        { key = "H",                  cb = tree_cb("toggle_dotfiles") },
+        { key = {"H", "zh", "."},     cb = tree_cb("toggle_dotfiles") },
         { key = "I",                  cb = tree_cb("toggle_git_ignored") },
         { key = "h",                  cb = tree_cb("close_node") },
         { key = "d",                  cb = tree_cb("remove") },
