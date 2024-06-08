@@ -46,7 +46,7 @@ null_ls.setup({
     formatting.black.with({ extra_args = { "--fast" } }),
     -- diagnostics.eslint_d,
     formatting.clang_format,
-    formatting.csharpier,
+    -- formatting.csharpier,
     formatting.golines,
     -- formatting.stylua,
     -- formatting.rustfmt.with({ extra_args = {}}),

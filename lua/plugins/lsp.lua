@@ -102,10 +102,10 @@ require("lspconfig")["gopls"].setup({
 })
 
 
-require("lspconfig")["csharp_ls"].setup({
-  on_attach = on_attach,
-	flags = lsp_flags,
-})
+-- require("lspconfig")["csharp_ls"].setup({
+--   on_attach = on_attach,
+-- 	flags = lsp_flags,
+-- })
 
 require("lspconfig")["lua_ls"].setup({
   on_attach = on_attach,

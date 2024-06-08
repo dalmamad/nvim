@@ -12,7 +12,7 @@ local ensure_installed = {
   "stylua",
   "black",
   "clang-format",
-  "csharpier",
+  -- "csharpier",
 }
 
 local DEFAULT_SETTINGS = {
