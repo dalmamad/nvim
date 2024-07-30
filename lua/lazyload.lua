@@ -13,7 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   { "nvim-tree/nvim-web-devicons" },
-  { "nvim-lua/plenary.nvim",       commit = "968a4b9afec0c633bc369662e78f8c5db0eba249" }, -- Useful lua functions used by lots of plugins
+  { "nvim-lua/plenary.nvim"}, -- Useful lua functions used by lots of plugins
   {
     "akinsho/toggleterm.nvim",
     config = function()
@@ -127,7 +127,6 @@ require("lazy").setup({
   -- Treesitter
   {
     "nvim-treesitter/nvim-treesitter",
-    -- commit = "4953fdf73ef5ada18e1e969019803605f4f4a4ac",
     build = function()
       local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
       ts_update()

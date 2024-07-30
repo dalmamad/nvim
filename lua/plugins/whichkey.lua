@@ -3,8 +3,6 @@ if not status_ok then
   return
 end
 local ss = vim.api.nvim_buf_get_name(0)
-print(ss)
--- print(vim.fn.expand('%'))
 
 local setup = {
   plugins = {
@@ -83,7 +81,7 @@ local opts_1 = {
   -- the prefix is prepended to every mapping part of `mappings`
   prefix = "<leader>",
   buffer = nil,   -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true,  -- use `silent` when creating keymaps
+  silent = false,  -- use `silent` when creating keymaps
   noremap = true, -- use `noremap` when creating keymaps
   nowait = false, -- use `nowait` when creating keymaps
 }
@@ -187,6 +185,10 @@ local mappings_1 = {
     -- v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
     a = { "<cmd>ToggleTermToggleAll<cr>", "ToggleAll" },
   },
+  o = {
+    name = "Obsidian",
+    n = {"<cmd>ObsidianCustomNote<cr>", "New Note"},
+  }
 }
 
 local opts_2 = {
