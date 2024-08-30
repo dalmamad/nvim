@@ -2,7 +2,6 @@ local status_ok, which_key = pcall(require, "which-key")
 if not status_ok then
   return
 end
-local ss = vim.api.nvim_buf_get_name(0)
 
 local setup = {
   plugins = {
@@ -36,7 +35,7 @@ local setup = {
   icons = {
     breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
     separator = "➜", -- symbol used between a key and it's label
-    group = "+",      -- symbol prepended to a group
+    group = "+", -- symbol prepended to a group
   },
   popup_mappings = {
     scroll_down = "<c-d>", -- binding to scroll down inside the popup
@@ -81,7 +80,7 @@ local opts_1 = {
   -- the prefix is prepended to every mapping part of `mappings`
   prefix = "<leader>",
   buffer = nil,   -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = false,  -- use `silent` when creating keymaps
+  silent = false, -- use `silent` when creating keymaps
   noremap = true, -- use `noremap` when creating keymaps
   nowait = false, -- use `nowait` when creating keymaps
 }
@@ -95,14 +94,15 @@ local mappings_1 = {
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   ["w"] = { "<cmd>update<CR>", "Save" },
   ["q"] = { "<cmd>q<CR>", "Quit" },
+  ["Q"] = { "<cmd>tabclose<CR>", "Quit Tab" },
   ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
   ["m"] = { "<cmd>MarkdownPreview<CR>", "Markdown Preview" },
   ["P"] = { "<Plug>RestNvimLast<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
   -- ["r"] = { "<cmd>RunCode<CR>", "Runner" },
   r = {
     name = "Rest",
-    r = {"<cmd>Rest run<cr>","HTTP Request"},
-    l = {"<cmd>Rest run last<cr>", "Last"},
+    r = { "<cmd>Rest run<cr>", "HTTP Request" },
+    l = { "<cmd>Rest run last<cr>", "Last" },
   },
   f = {
     name = "Find",
@@ -110,14 +110,15 @@ local mappings_1 = {
       "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
       "Find files",
     },
-    g = { "<cmd>Telescope live_grep theme=ivy<cr>", "live grep" },
+    g = { "<cmd>Telescope live_grep <cr>", "live grep" },
     t = { "<cmd>TodoTelescope <cr>", "Todos" },
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
     p = { "<cmd>Telescope projects<CR>", "Projects" },
     c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
     h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
     M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
-    r = { "<cmd>Telescope oldfiles hidden=true<cr>", "Recent File" },
+    l = { "<cmd>Telescope resume<cr>", "Last Search" },
+    o = { "<cmd>Telescope oldfiles hidden=true<cr>", "Old File" },
     R = { "<cmd>Telescope registers<cr>", "Registers" },
     k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
     C = { "<cmd>Telescope commands<cr>", "Commands" },
@@ -125,9 +126,10 @@ local mappings_1 = {
   g = {
     name = "Git",
     g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
-    j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
-    k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
+    a = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Next Hunk" },
+    A = { "<cmd>lua require 'gitsigns'.stage_buffer()<cr>", "Next Hunk" },
     l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
+    L = { "<cmd>lua require 'gitsigns'.toggle_current_line_blame()<cr>", "Blame" },
     p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
     r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
     R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
@@ -136,6 +138,8 @@ local mappings_1 = {
       "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
       "Undo Stage Hunk",
     },
+    h = { "<cmd>DiffviewFileHistory %<cr>", "Current file history" },
+    H = { "<cmd>DiffviewFileHistory <cr>", "Files history" },
     O = { "<cmd>Telescope git_status<cr>", "Open changed file" },
     B = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
     c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
@@ -187,8 +191,11 @@ local mappings_1 = {
   },
   o = {
     name = "Obsidian",
-    n = {"<cmd>ObsidianCustomNote<cr>", "New Note"},
-  }
+    n = { "<cmd>ObsidianNewNote<cr>", "New Note" },
+    d = { "<cmd>ObsidianToday<cr>", "Today Note" },
+  },
+  
+  
 }
 
 local opts_2 = {

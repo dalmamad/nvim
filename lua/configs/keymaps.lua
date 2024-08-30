@@ -88,10 +88,10 @@ keymap("n", "<leader>'", "$", opts)
 -- keymap("i", "<C-l>", "<Esc><C-w>l", opts)
 
 -- Better resize
-keymap("i", "<CA-k>", "<Esc>:resize -2<CR>", opts)
-keymap("i", "<CA-j>", "<Esc>:resize +2<CR>", opts)
-keymap("i", "<CA-h>", "<Esc>:vertical resize -2<CR>", opts)
-keymap("i", "<CA-l>", "<Esc>:vertical resize +2<CR>", opts)
+-- keymap("i", "<CA-k>", "<Esc>:resize -2<CR>", opts)
+-- keymap("i", "<CA-j>", "<Esc>:resize +2<CR>", opts)
+-- keymap("i", "<CA-h>", "<Esc>:vertical resize -2<CR>", opts)
+-- keymap("i", "<CA-l>", "<Esc>:vertical resize +2<CR>", opts)
 
 -- Paste
 keymap("i", "<C-p>", "<C-r>+", opts)

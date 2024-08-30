@@ -5,18 +5,11 @@ if not status_ok then
 end
 
 local header =  {
-
-[[                                                   ]],
-[[                                                   ]],
-[[                                                   ]],
-[[ ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗]],
-[[ ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║]],
-[[ ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║]],
-[[ ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║]],
-[[ ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║]],
-[[ ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝]],
-[[                                                   ]],
-
+      [[███    ██ ███████  ██████  ██    ██ ██ ███    ███]],
+      [[████   ██ ██      ██    ██ ██    ██ ██ ████  ████]],
+      [[██ ██  ██ █████   ██    ██ ██    ██ ██ ██ ████ ██]],
+      [[██  ██ ██ ██      ██    ██  ██  ██  ██ ██  ██  ██]],
+      [[██   ████ ███████  ██████    ████   ██ ██      ██]]
 }
 
 local theme = require("alpha.themes.theta")
@@ -33,7 +26,8 @@ local buttons = {
     dashboard.button("s", "   Settings", ":e $MYVIMRC | :cd %:p:h | split . | wincmd k | pwd<CR> | <cmd>NvimTreeToggle<cr>"),
     dashboard.button("d", "   Dotfiles", ":e ~/dotfiles <cr>"),
     dashboard.button("c", "   Code", ":e ~/code <cr>"),
-    dashboard.button("n", " 󰺿  Notes", ":chdir ~/notes | :lua require('telescope.builtin').find_files({cwd = '~/notes', hidden = false, find_command = {'find','.','-type','f'}})<cr>"),
+    dashboard.button("n", " 󰺿  Notes", ":e ~/notes <cr>"),
+    -- dashboard.button("n", " 󰺿  Notes", ":chdir ~/notes | :lua require('telescope.builtin').find_files({cwd = '~/notes', hidden = false, find_command = {'find','.','-type','f'}})<cr>"),
     dashboard.button("o", " 󰺿  NewNote", ":chdir ~/notes | :lua require('telescope.builtin').find_files({cwd = '~/notes', hidden = false, find_command = {'find','.','-type','f'}})<cr>"),
     dashboard.button("q", " 󰿅  Quit", ":qa<CR>"),
   },

@@ -54,7 +54,6 @@ require("lazy").setup({
   {
     "nvim-lualine/lualine.nvim",
     commit = "bfa0d99ba6f98d077dd91779841f1c88b7b5c165",
-    -- requires = { "nvim-tree/nvim-web-devicons", opt = true },
     config = function()
       require("plugins.lualine")
     end,
@@ -103,7 +102,7 @@ require("lazy").setup({
   {"hrsh7th/cmp-cmdline"},
   {"hrsh7th/cmp-path"},
   {"hrsh7th/cmp-nvim-lsp"},
-  { "hrsh7th/cmp-buffer"}, -- buffer completions { "hrsh7th/cmp-path",             commit = "466b6b8270f7ba89abd59f402c73f63c7331ff6e" }, -- path completions { "saadparwaiz1/cmp_luasnip",     commit = "a9de941bcbda508d0a45d28ae366bb3f08db2e36" }, -- snippet completions { "hrsh7th/cmp-nvim-lsp",         commit = "affe808a5c56b71630f17aa7c38e15c59fd648a8" }, { "hrsh7th/cmp-nvim-lua",         commit = "d276254e7198ab7d00f117e88e223b4bd8c02d21" },
+  { "hrsh7th/cmp-buffer"},
   {
     "hrsh7th/nvim-cmp",
     config = function()
@@ -111,14 +110,12 @@ require("lazy").setup({
     end,
   },                                                                                      -- The completion plugin
   -- snippets
-  { "L3MON4D3/LuaSnip"}, --snippet engine
   {"hrsh7th/cmp-vsnip"},
   {"hrsh7th/vim-vsnip"},
   { "rafamadriz/friendly-snippets"}, -- a bunch of snippets to use
   -- Telescope
   {
     "nvim-telescope/telescope.nvim",
-    -- commit = "d96eaa914aab6cfc4adccb34af421bdd496468b0",
     config = function()
       require("plugins.telescope")
     end,
@@ -139,11 +136,10 @@ require("lazy").setup({
   -- Autopairs
   {
     "windwp/nvim-autopairs",
-    commit = "fa6876f832ea1b71801c4e481d8feca9a36215ec",
     config = function()
       require("plugins.autopairs")
     end,
-  }, -- Autopairs, integrates with both cmp and treesitter
+  },
 
   -- Comment
   {
@@ -175,11 +171,12 @@ require("lazy").setup({
   {
     "dalmamad/nvim-tree.lua",
     commit = "fcdec7d186aee8ed39ef79c87666c1401f6a4d48",
-    -- requires = { "nvim-tree/nvim-web-devicons" },
+    requires = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require("plugins.nvim-tree")
     end,
   },
+
   -- Git
   {
     "lewis6991/gitsigns.nvim",
@@ -195,6 +192,12 @@ require("lazy").setup({
     config = function()
       require("plugins.git-conflict")
     end,
+  },
+  {
+    "sindrets/diffview.nvim",
+    config = function()
+      require("plugins.diffview")
+    end
   },
 
   --Notes
@@ -215,36 +218,10 @@ require("lazy").setup({
     end,
   },
 
-  -- use({
-  --   "nvim-neorg/neorg",
-  --   run = ":Neorg sync-parsers", -- This is the important bit!
-  --   config = function()
-  --     require("plugins.neorg")
-  --   end,
-  -- })
-  -- use {"nvim-neorg/neorg-telescope"}
-
   {
     "epwalsh/obsidian.nvim",
     config = function()
       require("plugins.obsidian")
-    end,
-  },
-
-  -- Notify
-  -- use({
-  --   "rcarriga/nvim-notify",
-  --   config = function()
-  --     require("plugins.notify")
-  --   end,
-  -- })
-
-  --Debug
-  {
-    "dalmamad/debugprint.nvim",
-    branch = "dalmamad",
-    config = function()
-      require("plugins.debugprint")
     end,
   },
 
@@ -294,19 +271,67 @@ require("lazy").setup({
       require("plugins.nvim-surround")
     end
   },
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = "cd app && yarn install",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+    ft = { "markdown" },
+  },
 
-  -- Sudo
+  -- Debug
+  {
+    "mfussenegger/nvim-dap",
+    dependencies = {"rcarriga/nvim-dap-ui", "nvim-neotest/nvim-nio","leoluz/nvim-dap-go"},
+    config = function ()
+      require("plugins.dap")
+    end
+  },
+
+  -- not using anymore
+
+  -- use({
+  --   "nvim-neorg/neorg",
+  --   run = ":Neorg sync-parsers", -- This is the important bit!
+  --   config = function()
+  --     require("plugins.neorg")
+  --   end,
+  -- })
+
+  -- use {"nvim-neorg/neorg-telescope"}
   -- {
-  --   "lambdalisue/suda.vim",
+  --   "tpope/vim-fugitive",
   -- },
 
-{
-  "iamcco/markdown-preview.nvim",
-  cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-  build = "cd app && yarn install",
-  init = function()
-    vim.g.mkdp_filetypes = { "markdown" }
-  end,
-  ft = { "markdown" },
-},
+  --   "lambdalisue/suda.vim",
+  -- "nvim-tree/nvim-web-devicons"
+
+  -- Notify
+  -- use({
+  --   "rcarriga/nvim-notify",
+  --   config = function()
+  --     require("plugins.notify")
+  --   end,
+  -- })
+
+  --Debug
+  -- {
+  --   "dalmamad/debugprint.nvim",
+  --   branch = "dalmamad",
+  --   config = function()
+  --     require("plugins.debugprint")
+  --   end,
+  -- },
+  
+  -- buffer completions
+  -- { "hrsh7th/cmp-path",             commit = "466b6b8270f7ba89abd59f402c73f63c7331ff6e" },
+  -- path completions
+  -- { "saadparwaiz1/cmp_luasnip",     commit = "a9de941bcbda508d0a45d28ae366bb3f08db2e36" },
+  -- snippet completions
+  -- { "hrsh7th/cmp-nvim-lsp",         commit = "affe808a5c56b71630f17aa7c38e15c59fd648a8" },
+  -- { "hrsh7th/cmp-nvim-lua",         commit = "d276254e7198ab7d00f117e88e223b4bd8c02d21" },
+
+  -- { "L3MON4D3/LuaSnip"}, --snippet engine
 })
