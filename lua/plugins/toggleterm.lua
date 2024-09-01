@@ -52,19 +52,16 @@ local lazygit = Terminal:new({
   cmd = "lazygit",
   hidden = true,
   dir = "git_dir",
+  start_in_insert = true,
   direction = "tab",
-  float_opts = {
-    border = "double",
-  },
   -- function to run on opening the terminal
   on_open = function(term)
-    vim.cmd("startinsert!")
     -- disable Esc for lazygit - conflict with lazygit
     vim.api.nvim_buf_del_keymap(0, "t", "<esc>")
     vim.api.nvim_buf_set_keymap(0, "t", "<A-Esc>", [[<C-\><C-n>]], { noremap = true })
     vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
-
   end,
+
   -- function to run on closing the terminal
   on_close = function(term)
     -- enable Esc after closing lazygit
