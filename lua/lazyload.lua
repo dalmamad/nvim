@@ -199,6 +199,9 @@ require("lazy").setup({
       require("plugins.diffview")
     end
   },
+  {
+    "tpope/vim-fugitive",
+  },
 
   --Notes
   {
@@ -301,9 +304,6 @@ require("lazy").setup({
   -- })
 
   -- use {"nvim-neorg/neorg-telescope"}
-  -- {
-  --   "tpope/vim-fugitive",
-  -- },
 
   --   "lambdalisue/suda.vim",
   -- "nvim-tree/nvim-web-devicons"
