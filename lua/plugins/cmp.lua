@@ -20,33 +20,32 @@ local check_backspace = function()
   return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
 end
 
---   פּ ﯟ   some other good icons
 local kind_icons = {
-  Text = "",
+  Text = "T",
   Method = "m",
-  Function = "",
-  Constructor = "",
-  Field = "",
-  Variable = "",
-  Class = "",
-  Interface = "",
-  Module = "",
-  Property = "",
-  Unit = "",
-  Value = "",
-  Enum = "",
-  Keyword = "",
-  Snippet = "",
-  Color = "",
-  File = "",
-  Reference = "",
-  Folder = "",
-  EnumMember = "",
-  Constant = "",
-  Struct = "",
-  Event = "",
-  Operator = "",
-  TypeParameter = "",
+  Function = "F",
+  Constructor = "C",
+  Field = "f",
+  Variable = "v",
+  Class = "c",
+  Interface = "I",
+  Module = "M",
+  Property = "P",
+  Unit = "U",
+  Value = "V",
+  Enum = "E",
+  Keyword = "k",
+  Snippet = "S",
+  Color = "C",
+  File = "F",
+  Reference = "R",
+  Folder = "D",
+  EnumMember = "E",
+  Constant = "C",
+  Struct = "S",
+  Event = "e",
+  Operator = "O",
+  TypeParameter = "T",
 }
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 
@@ -123,6 +122,7 @@ cmp.setup({
   },
 
   sources = cmp.config.sources({
+    { name = 'vim-dadbod-completion' },
     { name = 'nvim_lsp' },
     -- { name = 'luasnip' }, -- For luasnip users.
     { name = 'vsnip' }, -- For vsnip users.

@@ -2,3 +2,5 @@
 - a way to temporary remap <Esc> key if a tui app was oppened in nvim terminal
 - repl plugin
 - fix the notes in alpha
+- [ ] add cmp icons instead of character
+- [ ] handle db cmp

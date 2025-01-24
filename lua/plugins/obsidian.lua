@@ -49,7 +49,7 @@ end
 
 vim.api.nvim_create_user_command('ObsidianNewNote', obsidian_new_note, {})
 
-vim.keymap.set("n", "<leader>on", obsidian_new_note, { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>nn", obsidian_new_note, { noremap = true, silent = true })
 
 -- this will automatically wrap the text for markdown files
 vim.api.nvim_create_autocmd("BufEnter", {

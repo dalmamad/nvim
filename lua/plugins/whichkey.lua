@@ -98,6 +98,7 @@ local mappings_1 = {
   ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
   ["m"] = { "<cmd>MarkdownPreview<CR>", "Markdown Preview" },
   ["P"] = { "<Plug>RestNvimLast<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
+  ["F"] = { "<cmd>Neoformat<CR>", "Format" },
   -- ["r"] = { "<cmd>RunCode<CR>", "Runner" },
   r = {
     name = "Rest",
@@ -189,11 +190,15 @@ local mappings_1 = {
     -- v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
     a = { "<cmd>ToggleTermToggleAll<cr>", "ToggleAll" },
   },
-  o = {
+  n = {
     name = "Obsidian",
     n = { "<cmd>ObsidianNewNote<cr>", "New Note" },
     d = { "<cmd>ObsidianToday<cr>", "Today Note" },
   },
+  o = {
+    name = "DB",
+    o = { "<cmd>DBUIToggle<cr>", "Toggle"}
+  }
   
   
 }
