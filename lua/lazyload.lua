@@ -320,52 +320,12 @@ require("lazy").setup({
 
 	-- Debug
 	{
-		"mfussenegger/nvim-dap",
-		dependencies = { "rcarriga/nvim-dap-ui", "nvim-neotest/nvim-nio", "leoluz/nvim-dap-go" },
+		"mxsdev/nvim-dap-vscode-js",
+		dependencies = {
+			"mfussenegger/nvim-dap",
+		},
 		config = function()
 			require("plugins.dap")
 		end,
 	},
-
-	-- not using anymore
-
-	-- use({
-	--   "nvim-neorg/neorg",
-	--   run = ":Neorg sync-parsers", -- This is the important bit!
-	--   config = function()
-	--     require("plugins.neorg")
-	--   end,
-	-- })
-
-	-- use {"nvim-neorg/neorg-telescope"}
-
-	--   "lambdalisue/suda.vim",
-	-- "nvim-tree/nvim-web-devicons"
-
-	-- Notify
-	-- use({
-	--   "rcarriga/nvim-notify",
-	--   config = function()
-	--     require("plugins.notify")
-	--   end,
-	-- })
-
-	--Debug
-	-- {
-	--   "dalmamad/debugprint.nvim",
-	--   branch = "dalmamad",
-	--   config = function()
-	--     require("plugins.debugprint")
-	--   end,
-	-- },
-
-	-- buffer completions
-	-- { "hrsh7th/cmp-path",             commit = "466b6b8270f7ba89abd59f402c73f63c7331ff6e" },
-	-- path completions
-	-- { "saadparwaiz1/cmp_luasnip",     commit = "a9de941bcbda508d0a45d28ae366bb3f08db2e36" },
-	-- snippet completions
-	-- { "hrsh7th/cmp-nvim-lsp",         commit = "affe808a5c56b71630f17aa7c38e15c59fd648a8" },
-	-- { "hrsh7th/cmp-nvim-lua",         commit = "d276254e7198ab7d00f117e88e223b4bd8c02d21" },
-
-	-- { "L3MON4D3/LuaSnip"}, --snippet engine
 })

@@ -1,7 +1,10 @@
 vim.g.db_ui_use_nerd_fonts = 1
 vim.g.dbs = {
 	{ name = "postgres", url = "postgres://postgres@localhost:5432/postgres" },
-	{ name = "openmaptiles", url = "postgres://openmaptiles:openmaptiles@localhost:5433/openmaptiles" },
+	{ name = "local_openmaptiles/main", url = "postgres://openmaptiles:openmaptiles@localhost:5433/openmaptiles" },
+  { name = "remote_openmaptiles/main", url = "postgres://openmaptiles:openmaptiles@185.79.96.182:5433/openmaptiles" },
+  { name = "local_openmaptiles/update", url = "postgres://openmaptiles:openmaptiles@localhost:5433/temp_db" },
+  { name = "local_openmaptiles/postgres", url = "postgres://openmaptiles:openmaptiles@localhost:5433/postgres" },
 }
 
 vim.cmd([[
