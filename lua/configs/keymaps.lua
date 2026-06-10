@@ -130,3 +130,32 @@ keymap("x", "p", "P", opts)
 -- keymap("t", "<CA-j>", "<C-\\><C-N>:resize +2<CR>", opts)
 -- keymap("t", "<CA-h>", "<C-\\><C-N>:vertical resize -2<CR>", opts)
 -- keymap("t", "<CA-l>", "<C-\\><C-N>:vertical resize +2<CR>", opts)
+
+
+
+
+-- Function to handle Esc: exit to normal if zsh, else send Esc to the program and stay in terminal mode
+-- vim.keymap.set("t", "<Esc>", function()
+-- 	local title = vim.b.term_title or ""
+-- 	print("xxxx", title)
+-- 	if title:match("zsh") then
+-- 		return "<C-\\><C-N>"
+-- 	else
+-- 		local chan = vim.b.terminal_job_id
+-- 		vim.api.nvim_chan_send(chan, "\x1b") -- Send Esc (\x1b) to the terminal
+-- 		return "" -- Do nothing else (stay in terminal mode)
+-- 	end
+-- end, { expr = true, noremap = true })
+
+-- Function to handle Ctrl-A: exit to normal if not zsh, else send Ctrl-A to the program and stay in terminal mode
+-- vim.keymap.set("t", "<C-A>", function()
+-- 	local title = vim.b.term_title or ""
+-- 	if not title:match("zsh") then
+-- 		return "<C-\\><C-N>"
+-- 	else
+-- 		local chan = vim.b.terminal_job_id
+-- 		vim.api.nvim_chan_send(chan, "\x01") -- Send Ctrl-A (\x01) to the terminal
+-- 		return "" -- Do nothing else (stay in terminal mode)
+-- 	end
+-- end, { expr = true, noremap = true })
+

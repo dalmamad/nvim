@@ -1,6 +1,6 @@
 local ensure_installed = {
   -- LSP
-  "json-lsp",
+  -- "json-lsp",
   "lua-language-server",
   "typescript-language-server",
   "pyright",

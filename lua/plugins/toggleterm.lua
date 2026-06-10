@@ -48,6 +48,27 @@ end
 vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 
 local Terminal = require("toggleterm.terminal").Terminal
+
+-- local lf = Terminal:new({
+--   cmd = "lf",
+--   hidden = false,
+--   dir = "git_dir",
+--   close_on_exit = true,
+--   direction = "float",
+--   on_open = function(term)
+--     vim.cmd("startinsert!")
+--     vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", {noremap = true, silent = true})
+--   end,
+--   -- function to run on closing the terminal
+--   on_close = function(term)
+--     vim.cmd("startinsert!")
+--   end,
+-- })
+--
+-- function _LF_TOGGLE()
+--   lf:toggle()
+-- end
+
 local lazygit = Terminal:new({
   cmd = "lazygit",
   hidden = true,

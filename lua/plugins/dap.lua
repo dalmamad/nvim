@@ -1,45 +1,221 @@
-require("dap-vscode-js").setup({
-	-- Configuration options here
-	debugger_path = vim.fn.stdpath("data") .. "/lazy/vscode-js-debug",
-	adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" },
-})
-
+-- require("dap-vscode-js").setup({
+-- 	-- Configuration options here
+-- 	debugger_path = vim.fn.stdpath("data") .. "/lazy/vscode-js-debug",
+-- 	adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" },
+-- })
 ------
+-- local js_based_languages = { "javascript", "typescript", "typescriptreact" }
+-- for _, language in ipairs(js_based_languages) do
+-- 	require("dap").configurations[language] = {
+-- 		{
+-- 			type = "pwa-node",
+-- 			request = "launch",
+-- 			name = "Launch file",
+-- 			program = "${file}",
+-- 			cwd = "${workspaceFolder}",
+-- 		},
+-- 		{
+-- 			type = "pwa-node",
+-- 			request = "attach",
+-- 			name = "Attach to process",
+-- 			processId = require("dap.utils").pick_process,
+-- 			cwd = "${workspaceFolder}",
+-- 		},
+-- 	}
+-- end
 
-local js_based_languages = { "javascript", "typescript", "typescriptreact" }
-for _, language in ipairs(js_based_languages) do
-	require("dap").configurations[language] = {
-		{
-			type = "pwa-node",
-			request = "launch",
-			name = "Launch file",
-			program = "${file}",
-			cwd = "${workspaceFolder}",
-		},
-		{
-			type = "pwa-node",
-			request = "attach",
-			name = "Attach to process",
-			processId = require("dap.utils").pick_process,
-			cwd = "${workspaceFolder}",
-		},
-	}
-end
+require("dap").adapters["pwa-node"] = {
+	type = "server",
+	host = "localhost",
+	port = "${port}",
+	executable = {
+		command = "node",
+		args = { "/home/mamad/code/temp/js-debug/src/dapDebugServer.js", "${port}" },
+	},
+}
+
+require("dap").configurations.javascript = {
+	{
+		type = "pwa-node",
+		request = "launch",
+		name = "Launch",
+		program = "${file}",
+		cwd = "${workspaceFolder}",
+		console = "integratedTerminal",
+		internalConsoleOptions = "neverOpen",
+	},
+	{
+		type = "pwa-node",
+		request = "attach",
+		name = "Attach",
+		address = "localhost",
+		localRoot = vim.fn.getcwd(),
+		remoteRoot = vim.fn.getcwd(),
+		skipFiles = { "<node_internals>/**" },
+	},
+}
 
 -----
 
-vim.keymap.set("n", "<F5>", function()
+vim.fn.sign_define("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = "" })
+vim.cmd("highlight DapBreakpoint guifg=#a14727")
+
+vim.fn.sign_define("DapStopped", { text = "󰜴", texthl = "DapStopped", linehl = "", numhl = "" })
+vim.cmd("highlight DapStopped guifg=#56adf0")
+
+vim.fn.sign_define("DapBreakpointRejected", { text = "●", texthl = "DapBreakpointRejected", linehl = "", numhl = "" })
+vim.cmd("highlight DapBreakpointRejected guifg=#a14727")
+---
+
+vim.keymap.set("n", "<leader>dc", function()
+	require("dap").terminate({ all = true })
+end)
+
+vim.keymap.set("n", "<leader>ds", function()
+  require("dap-view").open()
 	require("dap").continue()
 end)
-vim.keymap.set("n", "<F10>", function()
+vim.keymap.set("n", "<leader>dn", function()
 	require("dap").step_over()
 end)
-vim.keymap.set("n", "<F11>", function()
+vim.keymap.set("n", "<leader>di", function()
 	require("dap").step_into()
 end)
-vim.keymap.set("n", "<F12>", function()
+vim.keymap.set("n", "<leader>do", function()
 	require("dap").step_out()
 end)
 vim.keymap.set("n", "<leader>dd", function()
 	require("dap").toggle_breakpoint()
 end)
+
+
+
+local x = {
+    winbar = {
+        show = true,
+        -- You can add a "console" section to merge the terminal with the other views
+        sections = { "watches", "scopes", "exceptions", "breakpoints", "threads", "repl" },
+        -- Must be one of the sections declared above (except for "console")
+        default_section = "watches",
+        -- Configure each section individually
+        base_sections = {
+            breakpoints = {
+                keymap = "B",
+                label = "Breakpoints [B]",
+                short_label = " [B]",
+                action = function()
+                    require("dap-view.views").switch_to_view("breakpoints")
+                end,
+            },
+            scopes = {
+                keymap = "S",
+                label = "Scopes [S]",
+                short_label = "󰂥 [S]",
+                action = function()
+                    require("dap-view.views").switch_to_view("scopes")
+                end,
+            },
+            exceptions = {
+                keymap = "E",
+                label = "Exceptions [E]",
+                short_label = "󰢃 [E]",
+                action = function()
+                    require("dap-view.views").switch_to_view("exceptions")
+                end,
+            },
+            watches = {
+                keymap = "W",
+                label = "Watches [W]",
+                short_label = "󰛐 [W]",
+                action = function()
+                    require("dap-view.views").switch_to_view("watches")
+                end,
+            },
+            threads = {
+                keymap = "T",
+                label = "Threads [T]",
+                short_label = "󱉯 [T]",
+                action = function()
+                    require("dap-view.views").switch_to_view("threads")
+                end,
+            },
+            repl = {
+                keymap = "R",
+                label = "REPL [R]",
+                short_label = "󰯃 [R]",
+                action = function()
+                    require("dap-view.repl").show()
+                end,
+            },
+            sessions = {
+                keymap = "K", -- I ran out of mnemonics
+                label = "Sessions [K]",
+                short_label = " [K]",
+                action = function()
+                    views.switch_to_view("sessions")
+                end,
+            },
+            console = {
+                keymap = "C",
+                label = "Console [C]",
+                short_label = "󰆍 [C]",
+                action = function()
+                    require("dap-view.term").show()
+                end,
+            },
+        },
+        -- Add your own sections
+        custom_sections = {},
+        controls = {
+            enabled = false,
+            position = "right",
+            buttons = {
+                "play",
+                "step_into",
+                "step_over",
+                "step_out",
+                "step_back",
+                "run_last",
+                "terminate",
+                "disconnect",
+            },
+            custom_buttons = {},
+        },
+    },
+    windows = {
+        height = 0.25,
+        position = "below",
+        terminal = {
+            width = 0.5,
+            position = "left",
+            -- List of debug adapters for which the terminal should be ALWAYS hidden
+            hide = {},
+            -- Hide the terminal when starting a new session
+            start_hidden = false,
+        },
+    },
+    icons = {
+        disabled = "",
+        disconnect = "",
+        enabled = "",
+        filter = "󰈲",
+        negate = " ",
+        pause = "",
+        play = "",
+        run_last = "",
+        step_back = "",
+        step_into = "",
+        step_out = "",
+        step_over = "",
+        terminate = "",
+    },
+    help = {
+        border = nil,
+    },
+    -- Controls how to jump when selecting a breakpoint or navigating the stack
+    switchbuf = "usetab",
+    auto_toggle = false,
+    -- Reopen dapview when switching tabs
+    follow_tab = false,
+}
+-- require("nvim-dap-view").setup(x)

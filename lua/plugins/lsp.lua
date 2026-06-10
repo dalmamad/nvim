@@ -43,7 +43,7 @@ vim.keymap.set("n", "gi", require("telescope.builtin").lsp_implementations, opts
 vim.keymap.set("n", "gz", require("telescope.builtin").lsp_incoming_calls, opts)
 vim.keymap.set("n", "gd", require("telescope.builtin").lsp_definitions, opts)
 vim.keymap.set("n", "<leader>fz", require("telescope.builtin").treesitter, opts)
-vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+-- vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
 -- vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, bufopts)
 -- vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
 -- vim.keymap.set("n", "<space>wl", function()
@@ -76,57 +76,57 @@ vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-	-- Enable completion triggered by <c-x><c-o>
-	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-
-	-- Highlight
-	vim.cmd([[
-  augroup document_highlight
-    autocmd! * <buffer>
-    autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-    autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-  augroup END
-  ]])
-
-	-- Mappings.
-	-- See `:help vim.lsp.*` for documentation on any of the below functions
-	local bufopts = { noremap = true, silent = true, buffer = bufnr }
-	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
-	-- vim.keymap.set("n", "gd", require("telescope.builtin").lsp_definitions, bufopts)
-	vim.api.nvim_buf_set_keymap(
-		0,
-		"n",
-		"gd",
-		"<cmd>lua vim.lsp.buf.definition()<CR>",
-		{ noremap = true, silent = true }
-	)
-	vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references, bufopts)
-	vim.keymap.set("n", "gi", require("telescope.builtin").lsp_implementations, bufopts)
-	vim.keymap.set("n", "gz", require("telescope.builtin").lsp_incoming_calls, bufopts)
-	-- vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
-
-	-- vim.keymap.set("n", "<leader>fz", require('telescope.builtin').treesitter, bufopts)
-	-- vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
-	-- vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, bufopts)
-	-- vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
-	vim.api.nvim_buf_set_keymap(
-		bufnr,
-		"n",
-		"gl",
-		'<cmd>lua vim.diagnostic.open_float({ border = "rounded" })<CR>',
-		opts
-	)
-	vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
-
-	-- vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
-	-- vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
-
-	-- vim.keymap.set("n", "<space>f", function()
-	-- 	vim.lsp.buf.format({ async = true })
-	-- end, bufopts)
-end
-
+-- local on_attach = function(client, bufnr)
+-- 	-- Enable completion triggered by <c-x><c-o>
+-- 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+--
+-- 	-- Highlight
+-- 	vim.cmd([[
+--   augroup document_highlight
+--     autocmd! * <buffer>
+--     autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+--     autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+--   augroup END
+--   ]])
+--
+-- 	-- Mappings.
+-- 	-- See `:help vim.lsp.*` for documentation on any of the below functions
+-- 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
+-- 	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
+-- 	-- vim.keymap.set("n", "gd", require("telescope.builtin").lsp_definitions, bufopts)
+-- 	vim.api.nvim_buf_set_keymap(
+-- 		0,
+-- 		"n",
+-- 		"gd",
+-- 		"<cmd>lua vim.lsp.buf.definition()<CR>",
+-- 		{ noremap = true, silent = true }
+-- 	)
+-- 	vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references, bufopts)
+-- 	vim.keymap.set("n", "gi", require("telescope.builtin").lsp_implementations, bufopts)
+-- 	vim.keymap.set("n", "gz", require("telescope.builtin").lsp_incoming_calls, bufopts)
+-- 	-- vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+--
+-- 	-- vim.keymap.set("n", "<leader>fz", require('telescope.builtin').treesitter, bufopts)
+-- 	-- vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
+-- 	-- vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, bufopts)
+-- 	-- vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
+-- 	vim.api.nvim_buf_set_keymap(
+-- 		bufnr,
+-- 		"n",
+-- 		"gl",
+-- 		'<cmd>lua vim.diagnostic.open_float({ border = "rounded" })<CR>',
+-- 		opts
+-- 	)
+-- 	vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
+--
+-- 	-- vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
+-- 	-- vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
+--
+-- 	-- vim.keymap.set("n", "<space>f", function()
+-- 	-- 	vim.lsp.buf.format({ async = true })
+-- 	-- end, bufopts)
+-- end
+--
 -- local lsp_flags = {
 -- 	-- This is the default in Nvim 0.7+
 -- 	debounce_text_changes = 150,
@@ -135,12 +135,12 @@ end
 -- 	on_attach = on_attach,
 -- 	flags = lsp_flags,
 -- })
-
+--
 -- require("lspconfig")["clangd"].setup({
---   on_attach = on_attach,
+-- 	on_attach = on_attach,
 -- 	flags = lsp_flags,
 -- })
-
+--
 -- require("lspconfig")["gopls"].setup({
 -- 	settings = {
 -- 		gopls = {
@@ -152,20 +152,20 @@ end
 -- 	on_attach = on_attach,
 -- 	flags = lsp_flags,
 -- })
-
+--
 -- require("lspconfig")["csharp_ls"].setup({
---   on_attach = on_attach,
+-- 	on_attach = on_attach,
 -- 	flags = lsp_flags,
 -- })
--- require'lspconfig'["omnisharp"].setup{
---   cmd = { "omnisharp" },  -- Specify the correct path to omnisharp executable if needed
---   root_dir = require'lspconfig'.util.root_pattern("*.sln", "*.csproj"),
--- }
-
--- In init.lua or wherever you configure your LSPs
+-- require("lspconfig")["omnisharp"].setup({
+-- 	cmd = { "omnisharp" }, -- Specify the correct path to omnisharp executable if needed
+-- 	root_dir = require("lspconfig").util.root_pattern("*.sln", "*.csproj"),
+-- })
+--
+-- -- In init.lua or wherever you configure your LSPs
 -- require("lspconfig").omnisharp.setup({
 -- 	cmd = { "omnisharp" },
---   on_attach = on_attach,
+-- 	on_attach = on_attach,
 --
 -- 	-- Enables support for reading code style, naming convention and analyzer
 -- 	-- settings from .editorconfig.
@@ -199,7 +199,7 @@ end
 -- 	-- true
 -- 	analyze_open_documents_only = true,
 -- })
-
+--
 -- require("lspconfig")["lua_ls"].setup({
 -- 	on_attach = on_attach,
 -- 	flags = lsp_flags,

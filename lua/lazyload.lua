@@ -209,6 +209,13 @@ require("lazy").setup({
 		"tpope/vim-fugitive",
 	},
 
+	{
+		"mbbill/undotree",
+		config = function()
+			require("plugins.undotree")
+		end,
+	},
+
 	--Notes
 	{
 		"folke/todo-comments.nvim",
@@ -320,12 +327,17 @@ require("lazy").setup({
 
 	-- Debug
 	{
-		"mxsdev/nvim-dap-vscode-js",
+		"mfussenegger/nvim-dap",
 		dependencies = {
-			"mfussenegger/nvim-dap",
+			{ "igorlfs/nvim-dap-view", opts = {} },
 		},
 		config = function()
 			require("plugins.dap")
 		end,
+	},
+	{
+		"microsoft/vscode-js-debug",
+		opt = true, -- Marks the plugin as optional (Lazy.nvim uses `lazy = true` for this)
+		build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
 	},
 })
