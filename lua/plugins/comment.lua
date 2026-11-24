@@ -3,6 +3,20 @@ if not status_ok then
   return
 end
 
+-- Neovim 0.12: vim.treesitter.get_parser() returns `nil, err` instead of raising
+-- when no parser is installed, so Comment's ft.calculate() (which only checks
+-- pcall's first return value) indexes a nil tree and throws "attempt to index
+-- local 'tree' (a nil value)". Fall back to the filetype's commentstring.
+local ft = require("Comment.ft")
+local calculate = ft.calculate
+rawset(ft, "calculate", function(ctx)
+  local ok, parser = pcall(vim.treesitter.get_parser, vim.api.nvim_get_current_buf())
+  if not ok or parser == nil then
+    return ft.get(vim.bo.filetype, ctx.ctype)
+  end
+  return calculate(ctx)
+end)
+
 comment.setup({
 
   ---Add a space b/w comment and the line

@@ -1,15 +1,15 @@
 local ensure_installed = {
   -- LSP
-  -- "json-lsp",
+  "json-lsp",
   "lua-language-server",
   "typescript-language-server",
   "pyright",
   "clangd",
-  "gopls",
+  -- "gopls",
   -- Formatter
   "prettier",
   "golines",
-  "stylua",
+  -- "stylua",
   "black",
   "clang-format",
   -- "csharpier",

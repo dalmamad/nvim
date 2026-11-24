@@ -127,18 +127,6 @@ require("lazy").setup({
 		end,
 	},
 
-	-- Treesitter
-	{
-		"nvim-treesitter/nvim-treesitter",
-		build = function()
-			local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
-			ts_update()
-		end,
-		config = function()
-			require("plugins.treesitter")
-		end,
-	},
-
 	-- Autopairs
 	{
 		"windwp/nvim-autopairs",
@@ -192,13 +180,13 @@ require("lazy").setup({
 		end,
 	},
 	-- git conflict
-	{
-		"akinsho/git-conflict.nvim",
-		version = "*",
-		config = function()
-			require("plugins.git-conflict")
-		end,
-	},
+	-- {
+	-- 	"akinsho/git-conflict.nvim",
+	-- 	version = "*",
+	-- 	config = function()
+	-- 		require("plugins.git-conflict")
+	-- 	end,
+	-- },
 	{
 		"sindrets/diffview.nvim",
 		config = function()
@@ -255,22 +243,22 @@ require("lazy").setup({
 
 	-- Motions
 	{
-		"phaazon/hop.nvim",
-		branch = "v2", -- optional but strongly recommended
+		"smoka7/hop.nvim",
+		version = "*",
 		config = function()
 			require("plugins.hop")
 		end,
 	},
 
 	-- Rest
-	{
-		"vhyrro/luarocks.nvim",
-		priority = 1000,
-		config = true,
-		opts = {
-			rocks = { "lua-curl", "nvim-nio", "mimetypes", "xml2lua" },
-		},
-	},
+	-- {
+	-- 	"vhyrro/luarocks.nvim",
+	-- 	priority = 1000,
+	-- 	config = true,
+	-- 	opts = {
+	-- 		rocks = { "lua-curl", "nvim-nio", "mimetypes", "xml2lua" },
+	-- 	},
+	-- },
 	{
 		"rest-nvim/rest.nvim",
 		ft = "http",
